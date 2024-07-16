@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Contracts\StorageServiceInterface;
 use App\Traits\HandlesImages;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,6 +13,8 @@ class Pornstar extends Model
 {
     use HasFactory;
     use HandlesImages;
+
+    protected StorageServiceInterface $storageService;
 
     protected $fillable = [
         'id',
@@ -29,6 +32,13 @@ class Pornstar extends Model
     protected $casts = [
         'aliases' => 'array',
     ];
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->setStorageService(app(StorageServiceInterface::class));
+    }
 
     public function attributes(): HasOne
     {

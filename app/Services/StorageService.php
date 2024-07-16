@@ -23,6 +23,11 @@ class StorageService implements StorageServiceInterface
         return Http::get($url)->body();
     }
 
+    public function url(string $path): string
+    {
+        return Storage::url($path);
+    }
+
     public function deleteDirectoryContents(string $directory): void
     {
         $files = Storage::allFiles($directory);

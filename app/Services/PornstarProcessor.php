@@ -16,7 +16,7 @@ class PornstarProcessor implements PornstarProcessorInterface
 {
     public function process(array $items): void
     {
-        $items = array_slice($items, 0, 10); //TODO remove this
+        $items = array_slice($items, 0, 50); //TODO remove this
 
         foreach ($items as $item) {
             try {
