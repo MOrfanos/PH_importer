@@ -18,12 +18,13 @@ trait HandlesImages
         $images = [];
         foreach ($thumbnail->urls as $url) {
             $imageName = basename($url);
-
+//dd($url);
             if (!$this->storageService->exists($imagePath . $imageName)) {
+//                var_dump($this->storageService->get($url), 'AAAAAAAAAAAAAA');
                 $imageContent = $this->storageService->get($url);
                 $this->storageService->put($imagePath . $imageName, $imageContent);
             }
-
+//var_dump($this->storageService->url($imagePath . $imageName), 'TESTTTTTTTTTTTTTTTTTTTTTTTTTT');
             $images = [
                 'url' => $this->storageService->url($imagePath . $imageName),
                 'height' => $thumbnail->height,
