@@ -2,6 +2,6 @@
 
 return [
     'api' => [
-        'Pornstars' => 20,
+        'Pornstars' => 60,
     ]
 ];
